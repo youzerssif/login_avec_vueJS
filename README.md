@@ -50,6 +50,34 @@ def islogin(request,):
 
 ```
 ### fichier html (vuejs)
+```html
+<div id="test">
+      <form action="/static/index2.html" method="post">
+        <div class="form-group has-feedback">
+          <input v-model="username" type="email" class="form-control" placeholder="Username">
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input v-model="password" type="password" class="form-control" placeholder="Password">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          
+          <!-- /.col -->```
+          <div class="col-xs-4">
+            <div class="row">
+              
+            </div>
+            <button v-on:click="login" type="button" class="btn btn-primary btn-block btn-flat">Sign In</button>
+            <div v-if="loader" class="lds-ring"><div></div><div></div><div></div><div></div></div>
+            
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
+    </div> 
+```
+
 ```javascript
 <script>
   // Block Vue JS 
