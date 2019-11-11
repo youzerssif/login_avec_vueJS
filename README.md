@@ -49,3 +49,55 @@ def islogin(request,):
     return JsonResponse(datas, safe=False)
 
 ```
+### fichier html (vuejs)
+```javascript
+<script>
+  // Block Vue JS 
+  new Vue({
+        el: '#test',
+        data: {
+          username : '',
+          password : '',
+          loader : false,
+          isSuccess : false,
+          error : false,
+        
+        },
+        delimiters : [ "${", "}"],
+        mounted(){
+            
+        },
+        methods: {
+          login:function(){
+              axios.defaults.xsrfCookieName = 'csrftoken'
+              axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+              axios.post('http://127.0.0.1:8000/post', {
+                  username: '' + this.username,
+                  password: '' + this.password,
+                  }).then(response => {
+                      console.log(response) 
+                      if(response.data.success){
+                          this.isSuccess=true
+                          this.error=false
+                          window.location.replace("profile");
+                      }
+                      else{
+                          this.error=true
+                          this.isSuccess=false
+                          window.location.replace("login");
+                      }
+                      
+                      console.log("success variable"+this.isSuccess)
+                      // console.log("success variable"+this.error)
+                  })
+                  .catch((err) => {
+                      console.log(err);
+                      
+                  })
+          },
+        }
+    });
+
+   
+</script>
+```
